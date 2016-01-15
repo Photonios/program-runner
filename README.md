@@ -1,4 +1,6 @@
 # program-runner
+[![Build Status](https://travis-ci.org/Photonios/program-runner.svg?branch=master)](https://travis-ci.org/Photonios/program-runner)
+
 `program-runner` is a small application that simplifies running programs in a terminal that require starting/stopping often. This is useful during development when a project consists of multiple processes. Instead of having a script that starts the programs in the background, thus removing the ability to view `stdout` `stderr` or having to go through multiple terminal windows to start/stop the processes, you can use `program-runner`.
 
 
