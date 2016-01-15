@@ -12,12 +12,27 @@ static pid_t pid = -1;
 static char **mainargv = NULL;
 
 void
+start_program()
+{
+    pid = fork();
+    if(pid == 0) {
+        execv(program, (mainargv + 2));
+    }
+}
+
+void
+stop_program()
+{
+    kill(pid, SIGKILL);
+    pid = -1;
+}
+
+void
 on_exit(int signal)
 {
     /* also kill the child process if we're exiting */
     if(pid != -1) {
-        kill(pid, SIGKILL);
-        pid = -1;
+       stop_program(); 
     }
 
     running = false;
@@ -32,10 +47,7 @@ on_program_stop(int signal)
         return;
     }
 
-    /* kill it */
-    kill(pid, SIGKILL);
-    pid = -1;
-
+    stop_program();
     fprintf(stdout, "[program-runner] stopped program\n");
 }
 
@@ -51,10 +63,7 @@ on_program_start(int signal)
     fprintf(stdout, "[program runner] starting program\n");
 
     /* start program as a child process */
-    pid = fork();
-    if(pid == 0) {
-        execv(program, (mainargv + 2));
-    }
+    start_program();
 }
 
 bool
