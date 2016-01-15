@@ -43,7 +43,7 @@ on_program_start(int signal)
 
     pid = fork();
     if(pid == 0) {
-        execv(program, ++mainargv);
+        execv(program, (mainargv + 2));
     }
 }
 
