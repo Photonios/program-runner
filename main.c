@@ -14,17 +14,25 @@ static char **mainargv = NULL;
 void
 on_exit(int signal)
 {
+    /* also kill the child process if we're exiting */
+    if(pid != -1) {
+        kill(pid, SIGKILL);
+        pid = -1;
+    }
+
     running = false;
 }
 
 void
 on_program_stop(int signal)
 {
+    /* make sure there's actually a program running */
     if(pid == -1) {
         fprintf(stderr, "[program-runner] cannot stop program, not running\n");
         return;
     }
 
+    /* kill it */
     kill(pid, SIGKILL);
     pid = -1;
 
@@ -34,6 +42,7 @@ on_program_stop(int signal)
 void
 on_program_start(int signal)
 {
+    /* make sure we don't start it twice */
     if(pid != -1) {
         fprintf(stderr, "[program-runner] not starting, already running\n");
         return;
@@ -41,6 +50,7 @@ on_program_start(int signal)
 
     fprintf(stdout, "[program runner] starting program\n");
 
+    /* start program as a child process */
     pid = fork();
     if(pid == 0) {
         execv(program, (mainargv + 2));
