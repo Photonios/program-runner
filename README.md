@@ -26,9 +26,11 @@ Or restart it:
     [program-runner] send signal (SIGUSR2) to [pid] (/home/myuser/myserverprogram)
     [program-runner] send signal (SIGUSR1) to [pid] (/home/myuser/myserverprogram)
 
-The argument specified to `program-runner-start/stop/restart` only has to be part of the path to the actual program you specified to program-runner. It looks at the process list to identify which instance of `program-runner` to send the signal to.
+The argument specified to `program-runner-start/stop/restart` only has to be part of the path to the actual program you specified to program-runner. It looks at the process list to identify which instance of `program-runner` to send the signal to. You can create your own script that starts/stops multiple instances of `program-runner`.
 
-You can create your own script that starts/stops multiple instances of `program-runner`.
+Optionally you can also specify extra arguments that `program-runner` should pass:
+
+    $ program-runner /home/myuser/myserverprogram arg1 arg2
 
 ## Building / Installing
 
