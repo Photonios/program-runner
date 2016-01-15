@@ -1,0 +1,11 @@
+#!/bin/bash
+
+thisdir="$(dirname "$0")"
+
+if [ $# -eq 0 ]; then
+    echo "Usage: program-runner-restart [part of program name]\n"
+    exit 1
+fi
+
+$thisdir/program-runner-stop $1
+$thisdir/program-runner-start $1
