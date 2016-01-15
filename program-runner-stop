@@ -9,4 +9,11 @@ if [ $# -eq 0 ]; then
 fi
 
 get_pid $1
+
+if [[ -z $pid ]]; then
+    echo "[program-runner] no program-runner instance found for '$1'"
+    exit 1
+fi
+
 kill -s USR2 $pid
+echo "[program-runner] send signal (SIGUSR2) to $pid ($name)"
