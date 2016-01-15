@@ -1,0 +1,7 @@
+Package: program-runner
+Version: 1.0-1
+Section: base
+Priority: optional
+Architecture: amd64
+Maintainer: Swen Kooij <photonios@outlook.com>
+Description: Runs programs in the terminal and allows control through UNIX signals.

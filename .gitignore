@@ -1,2 +1,4 @@
 *.o
+*.deb
+package/program-runner_1.0-1/usr
 program-runner
