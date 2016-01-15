@@ -1,12 +1,10 @@
 all:
-	gcc main.c -o program-runner
+	mkdir -p bin
+	gcc src/main.c -o bin/program-runner
 
 install:
-	cp program-runner /usr/bin
-	cp program-runner-start /usr/bin
-	cp program-runner-stop /usr/bin
-	cp program-runner-restart /usr/bin
-	cp program-runner-lib.sh /usr/bin
+	cp bin/* /usr/bin
+	cp scripts /usr/bin
 
 uninstall:
 	rm /usr/bin/program-runner || true
@@ -17,4 +15,4 @@ uninstall:
 
 clean:
 	rm *.o || true
-	rm program-runner || true
+	rm -r bin || true
