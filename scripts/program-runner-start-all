@@ -1,0 +1,12 @@
+#!/bin/bash
+
+thisdir="$(dirname "$0")"
+source "$thisdir/program-runner-lib.sh"
+
+ps aux | grep program-runner | grep -v bash | while read psaux_line
+do
+    name=`echo $psaux_line | awk '{print $12'}`
+    pid=`echo $psaux_line | awk '{print $2}'` 
+
+    program-runner-start $name
+done
