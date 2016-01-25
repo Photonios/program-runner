@@ -35,11 +35,17 @@ Optionally you can also specify extra arguments that `program-runner` should pas
     $ program-runner /home/myuser/myserverprogram arg1 arg2
 
 ## Building / Installing
+### From source
 
     make
     sudo make install
 
 This will build `program-runner` and install it to `/usr/bin`.
+
+### From *.deb package
+
+    wget https://github.com/Photonios/program-runner/releases/download/release-1.1/program-runner_1.1-1.deb
+    sudo dpkg -i program-runner_1.1-1.deb
 
 
 ## Uninstalling
