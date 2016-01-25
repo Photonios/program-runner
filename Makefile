@@ -11,6 +11,8 @@ uninstall:
 	rm /usr/bin/program-runner-start || ture
 	rm /usr/bin/program-runner-stop || true
 	rm /usr/bin/program-runner-restart || true
+	rm /usr/bin/program-runner-start-all || true
+	rm /usr/bin/program-runner-stop-all || true
 	rm /usr/bin/program-runner-lib.sh || true
 
 clean:

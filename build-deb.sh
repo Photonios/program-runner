@@ -1,6 +1,6 @@
 #!/bin/bash
 
-packagedir=package/program-runner_1.0-1
+packagedir=package/program-runner_1.1-1
 destdir=$packagedir/usr/bin
 
 # Build
