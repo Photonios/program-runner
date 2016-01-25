@@ -2,4 +2,4 @@
 *.deb
 bin/
 dist/
-package/program-runner_1.0-1/usr
+package/program-runner_1.1-1/usr
